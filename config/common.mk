@@ -1,6 +1,16 @@
 # Allow vendor/extra to override any property by setting it first
 $(call inherit-product-if-exists, vendor/extra/product.mk)
 
+# Addl. product packages for microG build flavor
+PRODUCT_PACKAGES += \
+    AuroraStore \
+    GmsCore \
+    GsfProxy \
+    FakeStore \
+    FDroid \
+    FDroidPrivilegedExtension \
+    additional_repos.xml
+
 PRODUCT_BRAND ?= LineageOS
 
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
@@ -45,7 +55,9 @@ PRODUCT_COPY_FILES += \
     vendor/lineage/prebuilt/common/bin/50-lineage.sh:$(TARGET_COPY_OUT_SYSTEM)/addon.d/50-lineage.sh
 
 PRODUCT_ARTIFACT_PATH_REQUIREMENT_ALLOWED_LIST += \
-    system/addon.d/50-lineage.sh
+    system/addon.d/50-lineage.sh \
+    system/etc/microg.xml \
+    system/etc/org.fdroid.fdroid/additional_repos.xml
 
 ifneq ($(strip $(AB_OTA_PARTITIONS) $(AB_OTA_POSTINSTALL_CONFIG)),)
 PRODUCT_COPY_FILES += \

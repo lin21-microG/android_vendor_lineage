@@ -3,6 +3,7 @@ $(call inherit-product-if-exists, vendor/extra/product.mk)
 
 # Addl. product packages for microG build flavor
 PRODUCT_PACKAGES += \
+    AuroraServices \
     AuroraStore \
     GmsCore \
     GsfProxy \
